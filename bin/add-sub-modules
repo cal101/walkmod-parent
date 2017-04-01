@@ -1,0 +1,16 @@
+#!/bin/sh
+
+#
+# git submodules: https://git-scm.com/book/en/v2/Git-Tools-Submodules
+#
+
+for repo in javalang javalang-compiler merger walkmod-cfg
+do
+   [ -d $repo ] || git submodule add https://github.com/rpau/$repo
+done
+for repo in model-checker walkmod-cfg walkmod-core walkmod-gradle-plugin walkmod-javalang-plugin walkmod-pmd-plugin \
+	maven-walkmod-plugin quickstart walkmod-maven-plugin walkmod-override-plugin walkmod-rawclasspath-plugin
+do
+   [ -d $repo ] || git submodule add https://github.com/walkmod/$repo
+done
+
