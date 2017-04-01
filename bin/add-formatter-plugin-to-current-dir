@@ -1,0 +1,30 @@
+#!/bin/sh
+#
+# if pom.xml of current directory does not contain string "formatter-maven-plugin"
+# then add plugin configuration contained in pom-formatter-fragment.txt
+#
+
+DIR=`dirname $0`
+DIR=`cd "$DIR";pwd`
+
+if [ -f pom.xml ]
+then
+    if ! grep -q formatter-maven-plugin pom.xml
+    then
+        perl -i -e '
+my $file = "'$DIR/../lib/pom-formatter-fragment.txt'";
+
+while(<>) {
+   chomp;
+   if ($_ =~ m,^\s*</plugins>\s*$,) {
+       local $/;
+       open my $fh, "<", $file or die "cannot open $file: $!";
+       my $frag = <$fh>;
+       print "$frag";
+   }
+   print "$_\n";
+}' pom.xml
+        mkdir -p src/config/eclipse/formatter
+        cp "${DIR}/../lib/java.xml" src/config/eclipse/formatter
+    fi
+fi

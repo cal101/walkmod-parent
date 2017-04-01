@@ -1,0 +1,3 @@
+#!/bin/sh -e
+DIR=`dirname $0`
+${DIR}/foreach-submodule ../bin/add-formatter-plugin-to-currentdir
