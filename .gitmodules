@@ -1,0 +1,45 @@
+[submodule "walkmod-core"]
+	path = walkmod-core
+	url = https://github.com/walkmod/walkmod-core
+[submodule "walkmod-pmd-plugin"]
+	path = walkmod-pmd-plugin
+	url = https://github.com/walkmod/walkmod-pmd-plugin
+[submodule "javaparser"]
+	path = javaparser
+	url = https://github.com/rpau/javaparser
+[submodule "javalang"]
+	path = javalang
+	url = https://github.com/rpau/javalang
+[submodule "javalang-compiler"]
+	path = javalang-compiler
+	url = https://github.com/rpau/javalang-compiler
+[submodule "merger"]
+	path = merger
+	url = https://github.com/rpau/merger
+[submodule "model-checker"]
+	path = model-checker
+	url = https://github.com/walkmod/model-checker
+[submodule "walkmod-cfg"]
+	path = walkmod-cfg
+	url = https://github.com/rpau/walkmod-cfg
+[submodule "walkmod-gradle-plugin"]
+	path = walkmod-gradle-plugin
+	url = https://github.com/walkmod/walkmod-gradle-plugin
+[submodule "walkmod-javalang-plugin"]
+	path = walkmod-javalang-plugin
+	url = https://github.com/walkmod/walkmod-javalang-plugin
+[submodule "maven-walkmod-plugin"]
+	path = maven-walkmod-plugin
+	url = https://github.com/walkmod/maven-walkmod-plugin
+[submodule "quickstart"]
+	path = quickstart
+	url = https://github.com/walkmod/quickstart
+[submodule "walkmod-maven-plugin"]
+	path = walkmod-maven-plugin
+	url = https://github.com/walkmod/walkmod-maven-plugin
+[submodule "walkmod-override-plugin"]
+	path = walkmod-override-plugin
+	url = https://github.com/walkmod/walkmod-override-plugin
+[submodule "walkmod-rawclasspath-plugin"]
+	path = walkmod-rawclasspath-plugin
+	url = https://github.com/walkmod/walkmod-rawclasspath-plugin
