@@ -68,6 +68,8 @@ fetch and update all submodules:
 > `git submodule update --remote`
 
 
+Misc:
 > `git diff --cached --submodule`
+
 > `git diff --submodule`
 
