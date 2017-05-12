@@ -20,7 +20,7 @@ wrap_long_xsi_attributes() {
 }
 wrap_long_attributes() {
     ${SED} -r -e 's/^( *)(<(alias|bean|policy|policy-entry) [a-z][-a-z]*="[^"]*") ([a-z][-a-z]*=")/\1\2\n    \1\4/g' | \
-	sed -r -e '/^<(language)/ s/ ([a-z][a-z]*="[^"]*")/\n        \1/g'
+	${SED} -r -e '/^<(language)/ s/ ([a-z][a-z]*="[^"]*")/\n        \1/g'
 }
 # fix preamble, officially preferred style is 'UTF-8' but xml starlet insists on lower case 'utf-8'
 upper_case_preamble() {
