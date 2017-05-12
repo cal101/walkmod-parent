@@ -7,13 +7,17 @@ Simplifies application of global formattings.
 
 You have to initilize the submodules after clone:
 
+```
 git clone ...
 git submodule init
 git submodule update
+```
 
 or you do a recursive clone
 
+```
 git clone --recursive ...
+```
 
 ## Commands
 
