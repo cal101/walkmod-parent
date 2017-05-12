@@ -1,4 +1,4 @@
 #!/bin/sh -e
 DIR=`dirname $0`
-DIR=`dirname "$DIR"`
+DIR=`cd "$DIR";pwd`
 ${DIR}/foreach-submodule ${DIR}/add-formatter-plugin-to-currentdir
