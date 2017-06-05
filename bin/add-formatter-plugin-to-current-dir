@@ -9,7 +9,11 @@ DIR=`cd "$DIR";pwd`
 
 if [ -f pom.xml ]
 then
-    if ! grep -q formatter-maven-plugin pom.xml
+    if ! grep -q .gradle .gitignore
+    then
+        echo ".gradle" >>.gitignore
+    fi
+    if ! grep -q formatter.gradle pom.xml
     then
         perl -i -e '
 my $file = "'$DIR/../lib/pom-formatter-fragment.txt'";
@@ -24,7 +28,9 @@ while(<>) {
    }
    print "$_\n";
 }' pom.xml
-        mkdir -p src/config/eclipse/formatter
+        mkdir -p src/config/eclipse/formatter src/config/spotless
         cp "${DIR}/../lib/java.xml" src/config/eclipse/formatter
+        cp "${DIR}/../lib/spotless.importorder" src/config/spotless
+        cp "${DIR}/../lib/formatter.gradle" .
     fi
 fi
