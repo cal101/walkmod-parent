@@ -11,6 +11,9 @@
 
 TMPFILE=`mktemp /tmp/formatXXXXXX`
 
+DIR=`dirname "$0"`
+DIR=`cd "$DIR";pwd`
+
 SED=sed
 # MacOS
 [ -f /usr/local/bin/gsed ] && SED="/usr/local/bin/gsed"
@@ -26,17 +29,20 @@ wrap_long_attributes() {
 upper_case_preamble() {
     ${SED} -e 's,^<?xml version="1.0" encoding="utf-8"?>$,<?xml version="1.0" encoding="UTF-8"?>,'
 }
-(find . -name pom.xml -o -name walkmod.xml -o -name \*-plugin.xml -o -name \*-defaults.xml
+(find . -name pom.xml -o -name \*-plugin.xml -o -name \*-defaults.xml
 ) | (while read f
 do
-    cat "$f" | dos2unix | xmlstarlet fo --encode utf-8 -s 4 | upper_case_preamble | wrap_long_xsi_attributes | wrap_long_attributes >$TMPFILE
+    cat "$f" | dos2unix | (xmlstarlet fo --encode utf-8 -s 4 || true) | upper_case_preamble | wrap_long_xsi_attributes | wrap_long_attributes >$TMPFILE
     cat "$TMPFILE" >"$f"
 done)
 
 # walkmod.xml files have a DTD, do not add xml preamble
-(find . -name pom.xml -o -name walkmod.xml -o -name \*-plugin.xml -o -name \*-defaults.xml
+(find . -name walkmod.xml
 ) | (while read f
 do
-    cat "$f" | dos2unix | xmlstarlet fo -o -s 4 >$TMPFILE
+    # for whatever reason xmlstarlet sets an error exit code
+    cat "$f" | dos2unix | (xmlstarlet fo -o -s 4 >$TMPFILE || true)
+    cat "$TMPFILE" >"$f"
 done)
+exit 0
 
